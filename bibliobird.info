@@ -1,0 +1,35 @@
+name = Bibliobird
+description = A collaborative translating dictionary and language learning tool
+version = VERSION
+core = 7.x
+
+files[] = bibliobird.profile
+
+; Drupal Core
+dependencies[] = menu
+dependencies[] = image
+dependencies[] = list
+dependencies[] = number
+dependencies[] = options
+dependencies[] = path
+dependencies[] = taxonomy
+dependencies[] = search
+dependencies[] = shortcut
+dependencies[] = field
+dependencies[] = field_ui
+dependencies[] = file
+dependencies[] = dblog
+dependencies[] = update
+
+; Panopoly Recommended - Admin
+;dependencies[] = navbar
+;dependencies[] = backports
+;dependencies[] = simplified_menu_admin
+;dependencies[] = save_draft
+;dependencies[] = module_filter
+;dependencies[] = date_popup_authored
+
+; Panopoly Recommended - Other
+;dependencies[] = devel
+;dependencies[] = uuid
+
