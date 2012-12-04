@@ -1,0 +1,17 @@
+; Use this to capture any node variables in a feature!
+; Helpful when the node is actually declared by another modules hook_node_info()
+
+features[variable][] = comment_anonymous_TYPE
+features[variable][] = comment_default_mode_TYPE
+features[variable][] = comment_default_per_page_TYPE
+features[variable][] = comment_form_location_TYPE
+features[variable][] = comment_preview_TYPE
+features[variable][] = comment_subject_field_TYPE
+features[variable][] = comment_TYPE
+features[variable][] = language_content_type_TYPE
+features[variable][] = menu_options_TYPE
+features[variable][] = menu_parent_TYPE
+features[variable][] = node_options_TYPE
+features[variable][] = node_preview_TYPE
+features[variable][] = node_submitted_TYPE
+

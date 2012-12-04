@@ -15,6 +15,24 @@ projects[uuid][subdir] = contrib
 projects[libraries][version] = 2.0
 projects[libraries][subdir] = contrib
 
+projects[features][version] = 1.0
+projects[features][subdir] = contrib
+
+projects[context][version] = 3.0-beta4
+projects[context][subdir] = contrib
+
+projects[strongarm][version] = 2.0
+projects[strongarm][subdir] = contrib
+
+projects[advanced_forum][version] = 2.0
+projects[advanced_forum][subdir] = contrib
+
+projects[ctools][version] = 1.2
+projects[ctools][subdir] = contrib
+
+projects[views][version] = 3.5
+projects[views][subdir] = contrib
+
 ; Admin theme
 projects[tao][version] = 3.0-beta4
 projects[rubik][version] = 4.0-beta3
