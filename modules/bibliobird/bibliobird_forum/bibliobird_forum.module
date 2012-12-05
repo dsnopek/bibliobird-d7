@@ -1,4 +1,9 @@
 <?php
 
-include_once('bibliobird_forum.features.inc');
+/**
+ * @file
+ * Code for the Bibliobird forum feature.
+ */
+
+include_once 'bibliobird_forum.features.inc';
 

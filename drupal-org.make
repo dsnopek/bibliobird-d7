@@ -33,6 +33,15 @@ projects[ctools][subdir] = contrib
 projects[views][version] = 3.5
 projects[views][subdir] = contrib
 
+projects[wikitools][version] = 1.0-alpha1
+projects[wikitools][subdir] = contrib
+
+projects[insert][version] = 1.2
+projects[insert][subdir] = contrib
+
+projects[diff][version] = 3.2
+projects[diff][subdir] = contrib
+
 ; Admin theme
 projects[tao][version] = 3.0-beta4
 projects[rubik][version] = 4.0-beta3

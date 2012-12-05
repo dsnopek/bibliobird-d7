@@ -1,0 +1,96 @@
+<?php
+
+/**
+ * @file
+ * Code for the Bibliobird wiki feature.
+ */
+
+include_once 'bibliobird_wiki.features.inc';
+
+/**
+ * Implements hook_field_formatter_info_alter().
+ */
+function bibliobird_wiki_field_formatter_info_alter(&$info) {
+  if (isset($info['file_default'])) {
+    // allow images to be displayed as if they were files (like we did in Drupal 6)
+    $info['file_default']['field types'][] = 'image';
+  }
+}
+
+/**
+ * Implements hook_filter_info().
+ */
+function bibliobird_wiki_filter_info() {
+  $filters = array();
+  $filters['bibliobird_wiki_link'] = array(
+    'title' => t('Convert [[<em>title</em>]] into wiki links'),
+    'description' => t('Convert [[<em>title</em>]] into wiki links.  Using the "Image:" prefix embeds images.  Options can be included after the pipe symbol.'),
+    'process callback' => '_bibliobird_wiki_filter_link_process',
+  );
+  return $filters;
+}
+
+/**
+ * Implements filter process callback.
+ */
+function _bibliobird_wiki_filter_link_process($text, $filter, $format, $langcode, $cache, $cache_id) {
+  $text = preg_replace_callback('/\\[\\[Image:([^\\]]+)\\]\\]/', function ($matches) {
+    $opts = explode("|", $matches[1]);
+    return _bibliobird_wiki_image(array_shift($opts), $opts);
+  }, $text);
+
+  // TODO: do something with $langcode?
+  $text = preg_replace_callback('/\\[\\[([^\\]]+)\\]\\]/', function ($matches) {
+    $opts = explode("|", $matches[1]);
+    return l(!empty($opts[1]) ? $opts[1] : $opts[0], wikitools_wikilink_drupal_path($opts[0]));
+  }, $text);
+
+  return $text;
+}
+
+/**
+ * Outputs an image based on Wiki syntax.
+ */
+function _bibliobird_wiki_image($fid, $opts = array()) {
+  if ($file = file_load($fid)) {
+    $vars = array(
+      'path' => $file->uri,
+    );
+
+    foreach ($opts as $opt) {
+      if (preg_match('/^(\d+)x(\d+)px$/', $opt, $matches)) {
+        $vars['width'] = $matches[1];
+        $vars['height'] = $matches[2];
+      }
+    }
+
+    return l(theme('image', $vars), $filepath, array(
+      'html' => TRUE,
+      'attributes' => array('rel' => 'lightbox'),
+    ));
+  }
+
+  // TODO: In the future I should show some default broken image when the file can't be found
+  return "[IMAGE: $fid]";
+}
+
+/**
+ * Implements hook_insert_styles().
+ */
+function bibliobird_wiki_insert_styles() {
+  return array(
+    'wiki' => array(
+      'label' => t('Wiki syntax'),
+    )
+  );
+}
+
+/**
+ * Implements hook_insert_content().
+ */
+function bibliobird_wiki_insert_content($item, $style, $widgth) {
+  if ($style['name'] == 'wiki') {
+    return '[[Image:'. $item['fid'] .']]';
+  }
+}
+

@@ -1,4 +1,4 @@
-name = bibliobird_forum
+name = Bibliobird Forum
 description = The forum on Bibliobird.com
 core = 7.x
 package = Bibliobird.com
