@@ -10,9 +10,9 @@
 function bibliobird_forum_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: main-menu:forum
-  $menu_links['main-menu:forum'] = array(
-    'menu_name' => 'main-menu',
+  // Exported menu link: features:forum
+  $menu_links['features:forum'] = array(
+    'menu_name' => 'features',
     'link_path' => 'forum',
     'router_path' => 'forum',
     'link_title' => 'Forum',

@@ -1,0 +1,15 @@
+
+ * wikitools: Error when going to a non-exististant page:
+
+     Notice: Trying to get property of non-object in theme_wikitools_create() (line 234 of /home/webuser/platforms/drupal-7.17/profiles/bibliobird/modules/contrib/wikitools/wikitools.pages.inc).
+
+   Also the styling and Javascript is broken!
+
+ * wikitools: Port "canonical URL" patch to Drupal 7
+
+     http://drupal.org/node/239370
+
+ * Setup input format for use is the Wiki!
+   - Maybe bibliobird_core declares an input format default and in bibliobird_wiki we add the filter?
+   - Maybe bibliobird_wiki has a special input format only for it?
+

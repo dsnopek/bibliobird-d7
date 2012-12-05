@@ -14,11 +14,12 @@ dependencies[] = options
 dependencies[] = path
 dependencies[] = taxonomy
 dependencies[] = search
-dependencies[] = shortcut
+;dependencies[] = shortcut
 dependencies[] = field
 dependencies[] = field_ui
 dependencies[] = file
 dependencies[] = dblog
+dependencies[] = block
 dependencies[] = update
 
 ; Panopoly Recommended - Admin
@@ -30,7 +31,9 @@ dependencies[] = update
 ;dependencies[] = date_popup_authored
 
 ; Basic contrib
+dependencies[] = features
 dependencies[] = admin
 dependencies[] = libraries
 dependencies[] = uuid
+dependencies[] = diff
 

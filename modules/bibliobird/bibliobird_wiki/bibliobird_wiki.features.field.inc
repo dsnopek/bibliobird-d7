@@ -20,6 +20,14 @@ function bibliobird_wiki_field_default_fields() {
         0 => 'node',
       ),
       'field_name' => 'body',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
       'indexes' => array(
         'format' => array(
           0 => 'format',

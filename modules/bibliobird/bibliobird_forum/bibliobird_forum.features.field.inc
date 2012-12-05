@@ -42,7 +42,7 @@ function bibliobird_forum_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -50,9 +50,8 @@ function bibliobird_forum_field_default_fields() {
           'settings' => array(
             'trim_length' => 600,
           ),
-          'trim_length' => 600,
           'type' => 'text_summary_or_trimmed',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -71,7 +70,7 @@ function bibliobird_forum_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => -4,
+        'weight' => '2',
       ),
     ),
   );

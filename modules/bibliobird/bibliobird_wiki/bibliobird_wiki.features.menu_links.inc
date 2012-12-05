@@ -10,9 +10,9 @@
 function bibliobird_wiki_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: main-menu:wiki
-  $menu_links['main-menu:wiki'] = array(
-    'menu_name' => 'main-menu',
+  // Exported menu link: features:wiki
+  $menu_links['features:wiki'] = array(
+    'menu_name' => 'features',
     'link_path' => 'wiki',
     'router_path' => 'wiki',
     'link_title' => 'Wiki',
