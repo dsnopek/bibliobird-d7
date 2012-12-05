@@ -9,8 +9,20 @@ projects[admin][subdir] = contrib
 projects[devel][version] = 1.3
 projects[devel][subdir] = contrib
 
+projects[coder][version] = 1.2
+projects[coder][subdir] = contrib
+
 projects[uuid][version] = 1.0-alpha3
 projects[uuid][subdir] = contrib
+
+projects[entity][version] = 1.0-rc3
+projects[entity][subdir] = contrib
+
+projects[views_bulk_operations][version] = 3.0
+projects[views_bulk_operations][subdir] = contrib
+
+projects[rules][version] = 2.2
+projects[rules][subdir] = contrib
 
 projects[libraries][version] = 2.0
 projects[libraries][subdir] = contrib
@@ -24,11 +36,18 @@ projects[context][subdir] = contrib
 projects[strongarm][version] = 2.0
 projects[strongarm][subdir] = contrib
 
+projects[ctools][version] = 1.2
+projects[ctools][subdir] = contrib
+
 projects[advanced_forum][version] = 2.0
 projects[advanced_forum][subdir] = contrib
 
-projects[ctools][version] = 1.2
-projects[ctools][subdir] = contrib
+projects[mixpanel][version] = 1.x-dev
+projects[mixpanel][subdir] = contrib
+projects[mixpanel][type] = module
+projects[mixpanel][download][type] = git
+projects[mixpanel][download][revision] = 4bf3d1e
+projects[mixpanel][download][branch] = 7.x-1.x
 
 projects[views][version] = 3.5
 projects[views][subdir] = contrib

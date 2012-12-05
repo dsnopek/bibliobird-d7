@@ -1,0 +1,90 @@
+<?php
+
+/**
+ * Implements hook_mixpanel_defaults_alter().
+ */
+function bibliobird_metrics_mixpanel_defaults_alter(&$defaults, $account) {
+  if ($account->uid != 0) {
+    $defaults['cohort_week'] = date('Y', $account->created) . 'W' . date('W', $account->created);
+    $defaults['cohort_month'] = date('Y', $account->created) . '-' . date('m', $account->created);
+    $defaults['user_language'] = $account->language;
+
+    unset($defaults['cohort']);
+  }
+}
+
+/**
+ * Implements hook_mixpanel_people_data_alter().
+ */
+function bibliobird_metrics_mixpanel_people_data_alter(&$data, $account) {
+  $data['user_language'] = $account->language;
+}
+
+/**
+ * Implements hook_init().
+ */
+function bibliobird_metrics_init() {
+  // do some page specific events! 
+  switch ($_GET['q']) { 
+    case 'node/4509': 
+    case 'node/4510': 
+    case 'about': 
+      mixpanel_track('View landing page'); 
+      break; 
+ 
+    case 'user/register': 
+      mixpanel_track('View registration page'); 
+      break; 
+  } 
+ 
+  if (preg_match('/wial\/\d\/edit/', $_GET['q'])) { 
+    mixpanel_track('View WIAL edit page'); 
+  } 
+  elseif (preg_match('/wial\/\d\/review/', $_GET['q'])) { 
+    mixpanel_track('View WIAL review page'); 
+  }
+}
+
+/**
+ * Implements hook_lingwo_korpus_lookup().
+ */
+function bibliobird_metrics_lingwo_korpus_lookup($account, $entry) {
+  mixpanel_track('Lookup word in reader', array(
+    'entry' => $entry->getLingwoId(),
+    'source_language' => $entry->sourceLanguage,
+    'target_language' => $entry->targetLanguage,
+  ), $account);
+}
+
+/**
+ * Implements hook_nodeapi().
+ */
+function bibliobird_metrics_node_view($node, $view_mode, $langcode) {
+  if (function_exists('lingwo_korpus_text_content_type') && $node->type == lingwo_korpus_text_content_type()) {
+    mixpanel_track('View content', array('nid' => $node->nid));
+  }
+}
+
+/**
+ * Implements hook_user_insert().
+ */
+function bibliobird_metrics_user_insert(&$edit, $account) {
+  // this event has a magic mixpanel name...
+  mixpanel_track('$signup', array(), $account);
+}
+
+/**
+ * Implements hook_user_login().
+ */
+function bibliobird_metrics_user_login(&$edit, $account) {
+  mixpanel_track('Login', array(), $account);
+}
+
+/**
+ * Implements hook_user_logout().
+ */
+function bibliobird_metrics_user_logout($account) {
+  // the user logged out
+  mixpanel_track('Logout', array(), $account);
+}
+

@@ -8,5 +8,5 @@ if [ -z "$DRUSH" ]; then
   fi
 fi
 
-$DRUSH make --download-mechanism='drush_make' --working-copy --no-core --contrib-destination=. drupal-org.make
+$DRUSH make --download-mechanism='drush_make' --working-copy --no-core --no-gitinfofile --contrib-destination=. drupal-org.make
 

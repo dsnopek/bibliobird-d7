@@ -1,0 +1,6 @@
+name = Bibliobird Metrics
+description = Tracks user metrics using Mixpanel
+core = 7.x
+package = Bibliobird.com
+dependencies[] = mixpanel
+
