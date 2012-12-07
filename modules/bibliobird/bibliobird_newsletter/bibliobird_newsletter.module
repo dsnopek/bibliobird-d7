@@ -5,3 +5,48 @@
  */
 
 include_once 'bibliobird_newsletter.features.inc';
+
+/**
+ * Implements hook_mailchimp_lists_merge_values().
+ */
+function bibliobird_newsletter_mailchimp_lists_merge_values($mergevars, $account, $list) {
+  if ($list->name == 'bibliobird_newsletter') {
+    $lang_list = language_list();
+    $language = empty($account->language) ? language_default() : $lang_list[$account->language];
+
+    return array(
+      // For now, we want to clear out LNAME, since there is some old data there
+      'LNAME' => '',
+      
+      // Set the users mailing list language to their Drupal account language
+      'GROUPINGS' => array(
+        array(
+          'name' => variable_get('bibliobird_newsletter_mailchimp_language_group', 'Language / Język'),
+          'groups' => $language->native,
+        ),
+      ),
+    );
+  }
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function bibliobird_newsletter_module_implements_alter(&$implementations, $hook) {
+  $module = 'bibliobird_newsletter';
+  if ($hook == 'form_alter' && isset($implementations[$module])) {
+    // we need ours to run after mailchimp_lists
+    $group = $implementations[$module];
+    unset($implementations[$module]);
+    $implementations[$module] = $group;
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function bibliobird_newsletter_form_user_register_form_alter(&$form, &$form_state) {
+  // subscribe to our newsletter by default
+  $form['mailchimp_lists']['mailchimp_bibliobird_newsletter']['subscribe']['#default_value'] = TRUE;
+}
+

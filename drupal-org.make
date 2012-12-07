@@ -86,6 +86,7 @@ projects[wikitools][subdir] = contrib
 
 projects[mailchimp][version] = 2.7
 projects[mailchimp][subdir] = contrib
+projects[mailchimp][patch][] = http://drupal.org/files/mailchimp-sync-770528-6.patch
 
 projects[mandrill][version] = 1.2
 projects[mandrill][subdir] = contrib
@@ -93,7 +94,7 @@ projects[mandrill][patch][] = http://drupal.org/files/division-by-zero-1861516-1
 
 ; Admin theme
 projects[tao][version] = 3.0-beta4
-projects[rubik][version] = 4.0-beta3
+projects[rubik][version] = 4.0-beta8
 
 ; Responsive bartik (borrowed from panopoly_theme!)
 

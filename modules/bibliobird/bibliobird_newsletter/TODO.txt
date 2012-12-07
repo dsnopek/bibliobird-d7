@@ -1,0 +1,7 @@
+
+ * I'd like to only actually subscribe after the user has verified their e-mail address:
+
+   http://drupal.org/node/1824192#comment-6822956
+ 
+ * Create an admin page to edit the 'bibliobird_newsletter_mailchimp_language_group' variable
+
