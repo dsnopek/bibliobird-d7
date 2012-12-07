@@ -59,7 +59,7 @@ projects[mixpanel][version] = 1.x-dev
 projects[mixpanel][subdir] = contrib
 projects[mixpanel][type] = module
 projects[mixpanel][download][type] = git
-projects[mixpanel][download][revision] = 4bf3d1e
+projects[mixpanel][download][revision] = 41baf48
 projects[mixpanel][download][branch] = 7.x-1.x
 
 ; Bibliobird Notifications
@@ -81,6 +81,15 @@ projects[notifications_forum][download][branch] = 7.x-1.x
 
 projects[wikitools][version] = 1.0-alpha1
 projects[wikitools][subdir] = contrib
+
+; Bibliobird News
+
+projects[mailchimp][version] = 2.7
+projects[mailchimp][subdir] = contrib
+
+projects[mandrill][version] = 1.2
+projects[mandrill][subdir] = contrib
+projects[mandrill][patch][] = http://drupal.org/files/division-by-zero-1861516-1.patch
 
 ; Admin theme
 projects[tao][version] = 3.0-beta4

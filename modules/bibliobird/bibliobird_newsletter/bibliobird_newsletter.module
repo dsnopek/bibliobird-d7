@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Bibliobird newsletter feature.
+ */
+
+include_once 'bibliobird_newsletter.features.inc';
