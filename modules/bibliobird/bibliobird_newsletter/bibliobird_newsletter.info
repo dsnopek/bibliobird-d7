@@ -6,7 +6,6 @@ php = 5.2.4
 dependencies[] = features
 dependencies[] = mailchimp
 dependencies[] = mailchimp_campaign
-dependencies[] = mailchimp_campaigns
 dependencies[] = mailchimp_lists
 features[features_api][] = api:1
 features[mailchimp_list][] = bibliobird_newsletter
