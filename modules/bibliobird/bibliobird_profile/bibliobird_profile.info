@@ -1,7 +1,7 @@
 name = Bibliobird Profile
 description = User profiles on Bibliobird. Includes support for badges and founder numbers.
 core = 7.x
-package = Features
+package = Bibliobird.com
 php = 5.2.4
 dependencies[] = ctools
 dependencies[] = features

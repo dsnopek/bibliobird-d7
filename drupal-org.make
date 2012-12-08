@@ -17,6 +17,7 @@ projects[uuid][subdir] = contrib
 
 projects[entity][version] = 1.0-rc3
 projects[entity][subdir] = contrib
+;projects[entity][patch][] = http://drupal.org/files/1788764-writable_text_format.patch
 
 projects[views_bulk_operations][version] = 3.0
 projects[views_bulk_operations][subdir] = contrib
