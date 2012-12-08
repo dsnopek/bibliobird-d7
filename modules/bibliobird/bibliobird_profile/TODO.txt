@@ -1,0 +1,3 @@
+
+ * Style the user profile page so that the user picture is to the right of the bio
+
