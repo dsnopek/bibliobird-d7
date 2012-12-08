@@ -42,11 +42,22 @@ projects[ctools][subdir] = contrib
 projects[views][version] = 3.5
 projects[views][subdir] = contrib
 
+projects[panels][version] = 3.3
+projects[panels][subdir] = contrib
+
 projects[diff][version] = 3.2
 projects[diff][subdir] = contrib
 
 projects[insert][version] = 1.2
 projects[insert][subdir] = contrib
+
+; Panopoly components
+
+;projects[panopoly_theme][version] = 1.x-dev
+;projects[panopoly_theme][subdir] = panopoly
+;projects[panopoly_theme][download][type] = git
+;projects[panopoly_theme][download][revision] = 4f45887
+;projects[panopoly_theme][download][branch] = 7.x-1.x
 
 ; Bibliobird Forum
 

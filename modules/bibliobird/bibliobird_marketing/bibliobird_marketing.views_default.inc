@@ -113,6 +113,22 @@ function bibliobird_marketing_views_default_views() {
     'page' => 'page',
   );
   $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: Content pane */
+  $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['use_more'] = FALSE;
+  $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_text'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'Read more news...';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pane_title'] = 'Latest news';
   $translatables['site_updates'] = array(
     t('Master'),
     t('Bibliobird News'),
@@ -131,6 +147,10 @@ function bibliobird_marketing_views_default_views() {
     t('last »'),
     t('Page'),
     t('Feed'),
+    t('Content pane'),
+    t('Read more news...'),
+    t('Latest news'),
+    t('View panes'),
   );
   $export['site_updates'] = $view;
 
