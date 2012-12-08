@@ -73,13 +73,13 @@ function bibliobird_profile_strongarm() {
           'weight' => '0',
         ),
         'timezone' => array(
-          'weight' => '3',
+          'weight' => '4',
         ),
       ),
       'display' => array(
         'summary' => array(
           'default' => array(
-            'weight' => '2',
+            'weight' => '3',
             'visible' => TRUE,
           ),
         ),
@@ -92,15 +92,8 @@ function bibliobird_profile_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_pictures';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['user_pictures'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'user_picture_dimensions';
-  $strongarm->value = '320x320';
-  $export['user_picture_dimensions'] = $strongarm;
 
   return $export;
 }

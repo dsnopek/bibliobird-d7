@@ -171,7 +171,7 @@ function bibliobird_profile_field_default_fields() {
             'view_mode' => 'full',
           ),
           'type' => 'field_collection_table_view',
-          'weight' => '1',
+          'weight' => '2',
         ),
       ),
       'entity_type' => 'user',
@@ -186,7 +186,7 @@ function bibliobird_profile_field_default_fields() {
         'module' => 'field_collection_table',
         'settings' => array(),
         'type' => 'field_collection_table',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
@@ -229,7 +229,7 @@ function bibliobird_profile_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '0',
+          'weight' => '1',
         ),
       ),
       'entity_type' => 'user',
@@ -252,12 +252,102 @@ function bibliobird_profile_field_default_fields() {
     ),
   );
 
+  // Exported field: 'user-user-field_user_picture'.
+  $fields['user-user-field_user_picture'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_user_picture',
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'image',
+      'settings' => array(
+        'default_image' => 0,
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '0',
+      'type' => 'image',
+    ),
+    'field_instance' => array(
+      'bundle' => 'user',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => 'medium',
+          ),
+          'type' => 'image',
+          'weight' => '0',
+        ),
+      ),
+      'entity_type' => 'user',
+      'field_name' => 'field_user_picture',
+      'label' => 'Picture',
+      'required' => 0,
+      'settings' => array(
+        'alt_field' => 0,
+        'default_image' => 0,
+        'file_directory' => '',
+        'file_extensions' => 'png gif jpg jpeg',
+        'max_filesize' => '30 KB',
+        'max_resolution' => '',
+        'min_resolution' => '',
+        'title_field' => 0,
+        'user_register_form' => 0,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'image',
+        'settings' => array(
+          'insert' => 0,
+          'insert_absolute' => 0,
+          'insert_class' => '',
+          'insert_default' => 'auto',
+          'insert_styles' => array(
+            'auto' => 'auto',
+            'icon_link' => 0,
+            'image' => 0,
+            'image_large' => 0,
+            'image_medium' => 0,
+            'image_thumbnail' => 0,
+            'link' => 0,
+            'wiki' => 0,
+          ),
+          'insert_width' => '',
+          'preview_image_style' => 'thumbnail',
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'image_image',
+        'weight' => '1',
+      ),
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('About me');
   t('Language');
   t('Languages');
   t('Level');
+  t('Picture');
   t('The languages you know and are learning! This will be shown on your profile.');
 
   return $fields;

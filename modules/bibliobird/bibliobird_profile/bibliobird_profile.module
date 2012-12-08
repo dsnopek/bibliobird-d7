@@ -214,3 +214,38 @@ function bibliobird_profile_preprocess_author_pane(&$vars) {
   }
 }
 
+/**
+ * Implements hook_preprocess_HOOK() for author-pane-user-picture.tpl.php.
+ *
+ * Gets author_pane to use field_user_picture rather than $account->picture.
+ */
+function bibliobird_profile_preprocess_author_pane_user_picture(&$vars) {
+  $account = $vars['account'];
+
+  // Copied mostly from template_preprocess_author_pane_user_picture().
+  if (!empty($account->field_user_picture['und'][0]['uri'])) {
+    $filepath = $account->field_user_picture['und'][0]['uri'];
+    $alt = t("@user's picture", array('@user' => format_username($account)));
+
+    if (file_valid_uri($filepath) && $style = ((!empty($vars['picture_preset'])) ? $vars['picture_preset'] : '')) {
+      $vars['picture'] = theme('image_style', array('style_name' => $style, 'path' => $filepath, 'alt' => $alt, 'title' => $alt));
+      $vars['imagecache_used'] = TRUE;
+    }
+    else {
+      $vars['picture'] = theme('image', array('path' => $filepath, 'alt' => $alt, 'title' => $alt));
+      $vars['imagecache_used'] = FALSE;
+    }
+
+    if (!empty($account->uid) && user_access('access user profiles')) {
+      $options = array(
+        'attributes' => array('title' => t('View user profile.')),
+        'html' => TRUE,
+      );
+      $vars['picture_link_profile'] = l($vars['picture'], "user/$account->uid", $options);
+    }
+    else {
+      $vars['picture_link_profile'] = FALSE;
+    }
+  }
+}
+
