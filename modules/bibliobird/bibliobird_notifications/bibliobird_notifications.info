@@ -1,5 +1,5 @@
 name = Bibliobird Notifications
-description = Send e-mail notifications when content is updated or changed
+description = Sends e-mail notifications when content is updated or changed.
 core = 7.x
 package = Bibliobird.com
 php = 5.2.4

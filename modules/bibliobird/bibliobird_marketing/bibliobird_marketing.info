@@ -1,4 +1,4 @@
-name = Bibliobird marketing
+name = Bibliobird Marketing
 description = Marketing features for Bibliobird.com including site updates and the front page.
 core = 7.x
 package = Bibliobird.com

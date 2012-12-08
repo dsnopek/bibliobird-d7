@@ -1,5 +1,5 @@
 name = Bibliobird Forum
-description = The forum on Bibliobird.com
+description = The forum on Bibliobird.com.
 core = 7.x
 package = Bibliobird.com
 php = 5.2.4

@@ -1,4 +1,4 @@
-name = Bibliobird newsletter
+name = Bibliobird Newsletter
 description = Integrates Bibliobird with Mailchimp to implement our newsletter.
 core = 7.x
 package = Bibliobird.com

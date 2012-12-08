@@ -1,5 +1,5 @@
-name = BiblioBird.com Login
-description = Customize the login system for our needs
+name = BiblioBird Login
+description = Customizations to the login system.
 core = 7.x
 package = Bibliobird.com
 php = 5.2.4

@@ -1,5 +1,5 @@
 name = Bibliobird Wiki
-description = The wiki on Bibliobird.com
+description = The wiki on Bibliobird.com.
 core = 7.x
 package = Bibliobird.com
 php = 5.2.4
