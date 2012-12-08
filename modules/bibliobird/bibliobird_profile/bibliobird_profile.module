@@ -1,0 +1,216 @@
+<?php
+
+/**
+ * @file
+ * Code for the Bibliobird Profile feature.
+ */
+
+include_once 'bibliobird_profile.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function bibliobird_profile_menu() {
+  $items = array();
+  $items['admin/config/people/profile'] = array(
+    'title' => 'Profile',
+    'description' => 'Settings for BiblioBird.com Profile module.',
+    'access arguments' => array('administer site configuration'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('bibliobird_profile_admin_settings'),
+    'file' => 'bibliobird_profile.admin.inc',
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function bibliobird_profile_theme() {
+  return array(
+    'bibliobird_profile_badges' => array(
+      'variables' => array('roles' => NULL),
+    ),
+    'bibliobird_profile_founder_number' => array(
+      'variables' => array('founder_number' => NULL),
+    ),
+  );
+}
+
+/**
+ * Implements hook_permission().
+ */
+function bibliobird_profile_permission() {
+  return array(
+    'administer founder numbers' => array(
+      'title' => t('Administer founder numbers'),
+      'description' => t('Ability to change the users founder numbers.'),
+    ),
+  );
+}
+
+/**
+ * Gets a list of badges for the given user account.
+ *
+ * @param object $account
+ *   A user account object.
+ *
+ * @return array
+ *   An array giving the 'rid', 'role' and 'title' for the badges.
+ */
+function bibliobird_profile_get_badges($account) {
+  $roles = array();
+  $titles = variable_get('bibliobird_profile_role_titles', array());
+  foreach ($account->roles as $rid => $role) {
+    if (!empty($titles[$rid])) {
+      $roles[] = array(
+        'rid' => $rid,
+        'role' => $role,
+        'title' => $titles[$rid],
+      );
+    }
+  }
+  return $roles;
+}
+
+
+/**
+ * Implements hook_user_view().
+ */
+function bibliobird_profile_user_view($account, $view_mode) {
+  // integrate the titles and badges
+  $badges = bibliobird_profile_get_badges($account);
+  if (!empty($badges)) {
+    $account->content['badges'] = array(
+      '#type' => 'user_profile_category',
+      '#title' => t('Badges'),
+      '#weight' => 2,
+    );
+
+    $account->content['badges']['badges'] = array(
+      '#type' => 'user_profile_item',
+      '#markup' => theme('bibliobird_profile_badges', array('roles' => $badges)),
+    );
+
+    if (in_array('founder', $account->roles) && !empty($account->data['founder_number'])) {
+      $account->content['badges']['founder_number'] = array(
+        '#type' => 'user_profile_item',
+        '#markup' => theme('bibliobird_profile_founder_number', array('founder_number' => $account->data['founder_number'])),
+        '#weight' => 1,
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function bibliobird_profile_form_user_profile_form_alter(&$form, &$form_state, &$form_id) {
+  $account = $form['#user'];
+  $category = $form['#user_category'];
+
+  if ($category == 'account' && in_array('founder', $account->roles)) {
+    $form['founder'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Founding member'),
+      '#access' => user_access('administer founder numbers'),
+    );
+    $form['founder']['founder_number'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Founder number'),
+      '#default_value' => isset($account->data['founder_number']) ? $account->data['founder_number'] : '',
+    );
+  }
+}
+
+/**
+ * Implements hook_user_presave().
+ */
+function bibliobird_profile_user_presave(&$edit, $account, $category) {
+  if ($category == 'account' && in_array('founder', $account->roles)) {
+    $edit['data']['founder_number'] = $edit['founder_number'];
+  }
+  else {
+    unset($edit['data']['founder_number']);
+  }
+}
+
+//////
+// Theming
+
+/**
+ * Returns HTML for a list of badges.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - roles: The list of badges from bibliobird_profile_get_badges().
+ *
+ * @ingroup themeable
+ */
+function theme_bibliobird_profile_badges($variables) {
+  global $language;
+
+  $roles = $variables['roles'];
+
+  $langs = array($language->language);
+  if ($language->language != 'en') {
+    $langs[] = 'en';
+  }
+
+  $imgs = array();
+  $text = array();
+  foreach ($roles as $role) {
+    $name = str_replace(' ', '-', $role['role']);
+
+    $found = FALSE;
+    foreach ($langs as $lang) {
+      $img = drupal_get_path('module', 'bibliobird_profile') . "/badges/{$lang}/{$name}.png";
+
+      if (file_exists($img)) {
+        $imgs[] = theme('image', array('path' => $img, 'width' => '', 'height' => '', 'alt' => $role['title'], 'title' => $role['title'], 'attributes' => array('class' => 'bibliobird-profile-badge')));
+        $found = TRUE;
+        break;
+      }
+    }
+    if (!$found) {
+      $text[] = '<div class="bibliobird-profile-badge">' . check_plain($role['title']) . '</div>';
+    }
+  }
+  return implode('', $imgs) . implode('', $text);
+}
+
+/**
+ * Returns HTML for the founder number.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - founder_number: The users founder number.
+ *
+ * @ingroup themeable
+ */
+function theme_bibliobird_profile_founder_number($variables) {
+  $founder_number = $variables['founder_number'];
+  return '<p><strong>' . t('Founder number %founder_number', array('%founder_number' => $founder_number)) . '</strong></p>';
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for theme_author_pane().
+ */
+function bibliobird_profile_preprocess_author_pane(&$vars) {
+  $account = $vars['account'];
+
+  $badges = array();
+  foreach (bibliobird_profile_get_badges($account) as $badge) {
+    if (in_array($badge['role'], array('admin', 'founder1', 'founder2', 'founder3'))) {
+      $badges[] = $badge;
+    }
+  }
+  if (!empty($badges)) {
+    $vars['user_badges'] = theme('bibliobird_profile_badges', array('roles' => $badges));
+
+    if (in_array('founder', $account->roles) && !empty($account->data['founder_number'])) {
+      $vars['user_badges'] .= theme('bibliobird_profile_founder_number', array('founder_number' => $account->data['founder_number']));
+    }
+  }
+}
+

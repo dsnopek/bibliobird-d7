@@ -1,0 +1,4 @@
+
+ * Where does the 'thumbnail' image style come from? Right now biblibird_wiki has it, but that's not the right
+   place. Maybe we'll put it in bibliobird_core or maybe we can reuse panopoly_image?
+

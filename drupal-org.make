@@ -51,6 +51,12 @@ projects[diff][subdir] = contrib
 projects[insert][version] = 1.2
 projects[insert][subdir] = contrib
 
+projects[field_collection][version] = 1.0-beta4
+projects[field_collection][subdir] = contrib
+
+projects[field_collection_table][version] = 1.0-beta1
+projects[field_collection_table][subdir] = contrib
+
 ; Panopoly components
 
 ;projects[panopoly_theme][version] = 1.x-dev
@@ -63,6 +69,9 @@ projects[insert][subdir] = contrib
 
 projects[advanced_forum][version] = 2.0
 projects[advanced_forum][subdir] = contrib
+
+projects[author_pane][version] = 2.0-beta1
+projects[author_pane][subdir] = contrib
 
 ; Bibliobird Metrics
 
