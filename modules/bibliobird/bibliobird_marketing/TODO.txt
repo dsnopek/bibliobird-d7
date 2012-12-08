@@ -1,0 +1,7 @@
+
+ * What is content and what is config? I think we should probably have a minimal front_page stored in
+   the feature - but we can't let the actual site front page be limited by it. So, it should probably
+   be super generic...
+ 
+ * Look into fieldable_panels_panes for doing translatable panes that will appear on our panels
+
