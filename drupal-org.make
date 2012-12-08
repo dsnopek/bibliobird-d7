@@ -58,6 +58,14 @@ projects[field_collection][subdir] = contrib
 projects[field_collection_table][version] = 1.0-beta1
 projects[field_collection_table][subdir] = contrib
 
+; Optional spam handling modules
+
+projects[mollom][version] = 2.3
+projects[mollom][subdir] = contrib
+
+projects[spambot][version] = 1.1
+projects[spambot][subdir] = contrib
+
 ; Panopoly components
 
 ;projects[panopoly_theme][version] = 1.x-dev
@@ -103,7 +111,7 @@ projects[notifications_forum][download][branch] = 7.x-1.x
 projects[wikitools][version] = 1.0-alpha1
 projects[wikitools][subdir] = contrib
 
-; Bibliobird News
+; Bibliobird Newsletter
 
 projects[mailchimp][version] = 2.7
 projects[mailchimp][subdir] = contrib
@@ -112,6 +120,14 @@ projects[mailchimp][patch][] = http://drupal.org/files/mailchimp-sync-770528-6.p
 projects[mandrill][version] = 1.2
 projects[mandrill][subdir] = contrib
 projects[mandrill][patch][] = http://drupal.org/files/division-by-zero-1861516-1.patch
+
+; Bibliobird Login
+
+projects[logintoboggan][version] = 1.3
+projects[logintoboggan][subdir] = contrib
+
+projects[remember_me][version] = 1.0
+projects[remember_me][subdir] = contrib
 
 ; Admin theme
 projects[tao][version] = 3.0-beta4

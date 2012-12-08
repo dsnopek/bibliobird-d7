@@ -1,0 +1,107 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * Customize login for our needs
+ */
+
+include_once 'bibliobird_login.features.inc';
+
+/**
+ * Implements hook_init().
+ */
+function bibliobird_login_init() {
+  global $user;
+
+  $validating_id = logintoboggan_validating_id();
+  // bail early if the $validating_id is set to a core id
+  if (in_array($validating_id, array(DRUPAL_ANONYMOUS_RID, DRUPAL_AUTHENTICATED_RID))) {
+    return;
+  }
+
+  // we show this message every time an unvalidated user visits a page that isn't user/%/edit
+  // or one of the magic toboggan pages.
+  if (isset($user->roles[$validating_id]) && !(arg(0) == 'user' && (arg(2) == 'edit' || arg(1) == 'validate')) && arg(0) != 'toboggan') {
+    // only show after the user has been a user for a moment
+    if (REQUEST_TIME - $user->created > 10) {
+      drupal_set_message('<strong>' . t("You still haven't validated your account!") . '</strong>', 'error');
+      drupal_set_message(t("A validation e-mail has been sent to your e-mail address. In order to gain full access to the site, you will need to follow the instructions in that message."));
+      drupal_set_message(t("<a href=\"@user-edit\">Make sure</a> you entered the correct e-mail address or <a href=\"@resend-email\">re-send</a> the validation e-mail.", array('@user-edit' => url('user/' . $user->uid . '/edit'), '@resend-email' => url('toboggan/revalidate/' . $user->uid))));
+    }
+  }
+}
+
+/**
+ * Implements hook_url_outbound_alter().
+ */
+function bibliobird_login_url_outbound_alter(&$path, &$options, $original) {
+  if (user_is_anonymous() && in_array($original, array('user', 'user/register', 'user/login')) && empty($options['query'])) {
+    $options['query'] = drupal_get_destination();
+  }
+}
+
+/**
+ * Implements of hook_menu().
+ */
+function bibliobird_login_menu() {
+  $items = array();
+  $items['user/edit'] = array(
+    'title' => 'Edit my profile',
+    'description' => 'Redirect to a user\'s edit page',
+    'access callback' => 'user_is_logged_in',
+    'page callback' => 'bibliobird_login_user_edit_redirect_page',
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
+function bibliobird_login_user_edit_redirect_page() {
+  global $user;
+  drupal_goto('user/' . $user->uid . '/edit');
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function bibliobird_login_form_user_register_form_alter(&$form, &$form_state, $form_id) {
+  global $language;
+
+  // honey pot field
+  $form['url'] = array(
+    '#title' => t('URL'),
+    '#type' => 'textfield',
+  );
+
+  $form['#validate'][] = 'bibliobird_login_user_register_form_validate';
+
+  $form['#attached']['css'][] = drupal_get_path('module', 'bibliobird_login') . '/bibliobird_login.css';
+}
+
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
+function bibliobird_login_user_register_form_validate($form, &$form_state) {
+  # check our honey pot!
+  if (!empty($form_state['values']['url'])) {
+    form_set_error('url', t('Please leave the URL field blank.  It is there to catch bots!'));
+  }
+}
+
+/**
+ * Implements hook_fb().
+ */
+function bibliobird_login_fb($op, $data = NULL, $return = NULL) {
+  if ($op == 'post init') {
+    // if there is no destination set, then we redirect to the front page!
+    if (empty($_GET['destination'])) {
+      fb_js_settings('reload_url', url('<front>', array('absolute' => TRUE)));
+    }
+  }
+}
+

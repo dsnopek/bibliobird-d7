@@ -1,0 +1,7 @@
+
+ * Include the 'me' module for generic user links
+
+ * Experiment with LoginToboggan's 'Present a unified login/registration page' option
+
+ * Implement a way to only subscribe users to the newsletter after users has verified e-mail address
+
