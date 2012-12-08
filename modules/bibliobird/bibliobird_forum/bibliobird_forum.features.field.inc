@@ -20,6 +20,14 @@ function bibliobird_forum_field_default_fields() {
         0 => 'node',
       ),
       'field_name' => 'body',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
       'indexes' => array(
         'format' => array(
           0 => 'format',
@@ -43,6 +51,12 @@ function bibliobird_forum_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '0',
+        ),
+        'notifications' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'hidden',

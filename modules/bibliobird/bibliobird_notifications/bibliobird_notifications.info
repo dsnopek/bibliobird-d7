@@ -20,6 +20,7 @@ features[user_permission][] = subscribe to content type
 features[user_permission][] = subscribe to taxonomy terms
 features[variable][] = notifications_content_per_type
 features[variable][] = notifications_content_type_forum
+features[variable][] = notifications_content_type_site_update
 features[variable][] = notifications_content_type_wiki
 features[variable][] = notifications_option_subscribe_links
 features[variable][] = notifications_option_subscription_types_content_thread

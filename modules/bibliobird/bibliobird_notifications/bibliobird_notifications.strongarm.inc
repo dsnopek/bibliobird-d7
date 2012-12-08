@@ -29,6 +29,16 @@ function bibliobird_notifications_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'notifications_content_type_site_update';
+  $strongarm->value = array(
+    0 => 'content_thread',
+    1 => 'content_type',
+  );
+  $export['notifications_content_type_site_update'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'notifications_content_type_wiki';
   $strongarm->value = array(
     0 => 'content_thread',
