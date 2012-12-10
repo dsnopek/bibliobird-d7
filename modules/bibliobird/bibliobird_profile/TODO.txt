@@ -1,3 +1,5 @@
 
  * Style the user profile page so that the user picture is to the right of the bio
 
+ * Don't show the "Languages" if it's empty (or maybe something else acceptable - prompting them to complete it?)
+

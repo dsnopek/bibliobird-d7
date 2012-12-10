@@ -1,5 +1,5 @@
 api = 2
-core = 7.14
+core = 7.17
 
 ; Contrib modules
 
@@ -89,7 +89,7 @@ projects[mixpanel][subdir] = contrib
 projects[mixpanel][type] = module
 projects[mixpanel][download][type] = git
 projects[mixpanel][download][revision] = 41baf48
-projects[mixpanel][download][branch] = 7.x-1.x
+;projects[mixpanel][download][branch] = 7.x-1.x
 
 ; Bibliobird Notifications
 
@@ -104,7 +104,7 @@ projects[notifications_forum][subdir] = contrib
 projects[notifications_forum][type] = module
 projects[notifications_forum][download][type] = git
 projects[notifications_forum][download][revision] = e1eae1c
-projects[notifications_forum][download][branch] = 7.x-1.x
+;projects[notifications_forum][download][branch] = 7.x-1.x
 
 ; Bibliobird Wiki
 
@@ -132,18 +132,4 @@ projects[remember_me][subdir] = contrib
 ; Admin theme
 projects[tao][version] = 3.0-beta4
 projects[rubik][version] = 4.0-beta8
-
-; Responsive bartik (borrowed from panopoly_theme!)
-
-;projects[respondjs][version] = 1.1
-;projects[respondjs][subdir] = contrib
-
-;libraries[respondjs][download][type] = get
-;libraries[respondjs][download][url] = https://github.com/scottjehl/Respond/tarball/master
-
-;projects[responsive_bartik][version] = 1.x-dev
-;projects[responsive_bartik][type] = theme
-;projects[responsive_bartik][download][type] = git
-;projects[responsive_bartik][download][revision] = 7853fee
-;projects[responsive_bartik][download][branch] = 7.x-1.x
 
