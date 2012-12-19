@@ -28,6 +28,12 @@ projects[rules][subdir] = contrib
 projects[libraries][version] = 2.0
 projects[libraries][subdir] = contrib
 
+projects[variable][version] = 2.1
+projects[variable][subdir] = contrib
+
+projects[i18n][version] = 1.7
+projects[i18n][subdir] = contrib
+
 projects[features][version] = 1.0
 projects[features][subdir] = contrib
 
@@ -52,6 +58,9 @@ projects[diff][subdir] = contrib
 projects[insert][version] = 1.2
 projects[insert][subdir] = contrib
 
+projects[languageicons][version] = 1.0
+projects[languageicons][subdir] = contrib
+
 projects[field_collection][version] = 1.0-beta4
 projects[field_collection][subdir] = contrib
 
@@ -73,6 +82,15 @@ projects[spambot][subdir] = contrib
 ;projects[panopoly_theme][download][type] = git
 ;projects[panopoly_theme][download][revision] = 4f45887
 ;projects[panopoly_theme][download][branch] = 7.x-1.x
+
+; Bibliobird Dictionary
+
+projects[lingwo][version] = 1.x-dev
+projects[lingwo][subdir] = contrib
+projects[lingwo][type] = module
+projects[lingwo][download][type] = git
+projects[lingwo][download][revision] = f06684f
+;projects[lingwo][download][branch] = 7.x-1.x
 
 ; Bibliobird Forum
 
