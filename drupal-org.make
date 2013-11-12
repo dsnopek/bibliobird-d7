@@ -1,5 +1,5 @@
 api = 2
-core = 7.17
+core = 7.23
 
 ; Contrib modules
 
@@ -12,41 +12,41 @@ projects[devel][subdir] = contrib
 projects[coder][version] = 1.2
 projects[coder][subdir] = contrib
 
-projects[uuid][version] = 1.0-alpha3
+projects[uuid][version] = 1.0-alpha5
 projects[uuid][subdir] = contrib
 
-projects[entity][version] = 1.0-rc3
+projects[entity][version] = 1.2
 projects[entity][subdir] = contrib
 ;projects[entity][patch][] = http://drupal.org/files/1788764-writable_text_format.patch
 
-projects[views_bulk_operations][version] = 3.0
+projects[views_bulk_operations][version] = 3.1
 projects[views_bulk_operations][subdir] = contrib
 
-projects[rules][version] = 2.2
+projects[rules][version] = 2.6
 projects[rules][subdir] = contrib
 
-projects[libraries][version] = 2.0
+projects[libraries][version] = 2.1
 projects[libraries][subdir] = contrib
 
-projects[variable][version] = 2.1
+projects[variable][version] = 2.3
 projects[variable][subdir] = contrib
 
-projects[i18n][version] = 1.7
+projects[i18n][version] = 1.10
 projects[i18n][subdir] = contrib
 
 projects[features][version] = 1.0
 projects[features][subdir] = contrib
 
-projects[context][version] = 3.0-beta4
+projects[context][version] = 3.1
 projects[context][subdir] = contrib
 
 projects[strongarm][version] = 2.0
 projects[strongarm][subdir] = contrib
 
-projects[ctools][version] = 1.2
+projects[ctools][version] = 1.3
 projects[ctools][subdir] = contrib
 
-projects[views][version] = 3.5
+projects[views][version] = 3.7
 projects[views][subdir] = contrib
 
 projects[panels][version] = 3.3
@@ -55,13 +55,13 @@ projects[panels][subdir] = contrib
 projects[diff][version] = 3.2
 projects[diff][subdir] = contrib
 
-projects[insert][version] = 1.2
+projects[insert][version] = 1.3
 projects[insert][subdir] = contrib
 
 projects[languageicons][version] = 1.0
 projects[languageicons][subdir] = contrib
 
-projects[field_collection][version] = 1.0-beta4
+projects[field_collection][version] = 1.0-beta5
 projects[field_collection][subdir] = contrib
 
 projects[field_collection_table][version] = 1.0-beta1
@@ -69,10 +69,10 @@ projects[field_collection_table][subdir] = contrib
 
 ; Optional spam handling modules
 
-projects[mollom][version] = 2.3
+projects[mollom][version] = 2.8
 projects[mollom][subdir] = contrib
 
-projects[spambot][version] = 1.1
+projects[spambot][version] = 1.3
 projects[spambot][subdir] = contrib
 
 ; Panopoly components
@@ -94,7 +94,7 @@ projects[lingwo][download][revision] = f06684f
 
 ; Bibliobird Forum
 
-projects[advanced_forum][version] = 2.0
+projects[advanced_forum][version] = 2.3
 projects[advanced_forum][subdir] = contrib
 
 projects[author_pane][version] = 2.0-beta1
@@ -131,13 +131,11 @@ projects[wikitools][subdir] = contrib
 
 ; Bibliobird Newsletter
 
-projects[mailchimp][version] = 2.7
+projects[mailchimp][version] = 2.12
 projects[mailchimp][subdir] = contrib
-projects[mailchimp][patch][] = http://drupal.org/files/mailchimp-sync-770528-6.patch
 
-projects[mandrill][version] = 1.2
+projects[mandrill][version] = 1.5
 projects[mandrill][subdir] = contrib
-projects[mandrill][patch][] = http://drupal.org/files/division-by-zero-1861516-1.patch
 
 ; Bibliobird Login
 
@@ -149,5 +147,5 @@ projects[remember_me][subdir] = contrib
 
 ; Admin theme
 projects[tao][version] = 3.0-beta4
-projects[rubik][version] = 4.0-beta8
+projects[rubik][version] = 4.0-beta9
 
